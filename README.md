@@ -21,7 +21,7 @@ This project is a codding challenge for senior software engineer at Foodics.
 
 1- Clone project by running the following command
 
-    $ git clone git@github.com:saadmehmood/coding-challenge.git
+    $ git clone git@github.com:saadmehmood/coding-challenge-foodics.git
 
 2- Create a mysql database and use that database credentials in the next step
 
