@@ -49,12 +49,92 @@ This project is a codding challenge for senior software engineer at Foodics.
 
     $ php artisan serve
 
-8- API post endpoint
-
-    http://localhost:8000/api/v1/orders
-
-9- Run the following command to run test cases
+8- Run the following command to run test cases
 
     $ php artisan test
 
-All Set!
+
+## Api Documentation
+
+REST api to store order info, update products and ingredients record in database. If the ingredients used more than 50% an email alert will be sent to merchant/vendor.
+
+### Api Endpoint
+
+```http
+POST http://localhost:8000/api/orders
+```
+
+### Request Body
+
+```json
+{
+    "products": [
+        {
+            "product_id": 1,
+            "quantity": 1
+        }
+    ]
+}
+```
+
+### Success Responses
+
+Success response will return the order info with products and ingredients data
+
+```json
+{
+    "data": {
+        "id": 6,
+        "products": [
+            {
+                "id": 1,
+                "name": "aut",
+                "ingredients": [
+                    {
+                        "id": 1,
+                        "stock": 611,
+                        "usedStock": 10,
+                        "stockAlertSent": 0
+                    },
+                    {
+                        "id": 2,
+                        "stock": 108,
+                        "usedStock": 60,
+                        "stockAlertSent": 1
+                    },
+                    {
+                        "id": 3,
+                        "stock": 446,
+                        "usedStock": 10,
+                        "stockAlertSent": 0
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+### Error Response
+
+```json
+{
+    "message": "The selected products.0.product_id is invalid.",
+    "errors": {
+        "products.0.product_id": [
+            "The selected products.0.product_id is invalid."
+        ]
+    }
+}
+```
+
+## Status Codes
+
+Orders Api returns the following status codes in response:
+
+| Status Code | Description               |
+|:------------|:--------------------------|
+| 201         | `CREATED`                 |
+| 422         | `UNPROCESSABLE CONTENT`   |
+| 500         | `INTERNAL SERVER ERROR`   |
+
+
