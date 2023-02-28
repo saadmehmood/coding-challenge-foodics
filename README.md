@@ -26,11 +26,22 @@ This project is a codding challenge for senior software engineer at Foodics.
 2- Create a mysql database and use that database credentials in the next step
 
 3- There is a file at project root named ".env.example", make a copy of this file with name ".env" and change the values in the following keys:
+    For database:
 
             DB_HOST = localhost
             DB_DATABASE = Database Name
             DB_USERNAME = Username
             DB_PASSWORD = Password
+
+    For mail settings:
+
+            MAIL_MAILER=smtp
+            MAIL_HOST=mailpit
+            MAIL_PORT=1025
+            MAIL_USERNAME=null
+            MAIL_PASSWORD=null
+            MAIL_ENCRYPTION=null
+            MAIL_FROM_ADDRESS="hello@example.com"
 
 4- Following directories should be writable by your web server
 

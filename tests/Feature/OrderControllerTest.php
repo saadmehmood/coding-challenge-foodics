@@ -60,10 +60,13 @@ class OrderControllerTest extends TestCase
     {
         $product = $this->createProduct();
 
-        $params = $this->validParams($product);
+        $params = $this->validParams($product, 2);
 
         $response = $this->postJson(route('orders.store', $params))->assertCreated();
         $response = json_decode($response->getContent(), true);
+
+        Mail::fake();
+
         $data = $response['data'];
         $this->assertEquals(1, $data['products'][0]['ingredients'][0]['stockAlertSent']);
     }
